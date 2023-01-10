@@ -10,26 +10,28 @@ import styled from "styled-components";
 const Father = styled.div`
   display :flex ;
   `;
-const BoxOne = styled.div`
-  background-color : teal;
+
+// tag 에서부터 값을 받아 오고 싶을때 prop 이용
+const Box = styled.div`
+  background-color : ${prop => prop.bgColor};
   width:100px;
   height:100px;
   `;
-const BoxTwo = styled.div`
-  background-color: tomato;
-  width:100px;
-  height:100px;
+//기존 css를 가지고 확장하고 싶을 때 
+const Circle = styled(Box)`
+  border-radius:50px;
 `;
+
 const Text = styled.span`
   color : white;
 `;
 function App() {
   return (
     <Father>
-      <BoxOne> 
+      <Box bgColor="teal"> 
         <Text>Hello</Text>
-      </BoxOne>  
-      <BoxTwo/>
+      </Box>  
+      <Circle bgColor="tomato"/>
      </Father>
   );
 }
