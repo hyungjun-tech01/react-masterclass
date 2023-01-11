@@ -6,7 +6,7 @@ import styled from "styled-components";
 // pixel 은 px로 표기 함.
 // backgroundColor -> background-color
 // backtik으로 묶어야 함. ``
-// 오타 수정이 자동으로 안됨 
+// 자동 완성이 안됨 
 const Father = styled.div`
   display :flex ;
   `;
@@ -25,6 +25,20 @@ const Circle = styled(Box)`
 const Text = styled.span`
   color : white;
 `;
+// button tag의 변경 button -> a 
+const Button = styled.button`
+  background-color : tomato;
+  border:0;
+  border-radius : 15px
+`;
+//maxLength , required 를 style안에 세팅하면 동작을 안함.. 이건 style이 아님.
+// 즉 input tag의 속성을 정의 할 수 있음 .attrs
+const Input = styled.input.attrs({required:true , maxLength:10})`
+  background-color : tomato;
+  required:true;
+  maxLength:10
+`;
+
 function App() {
   return (
     <Father>
@@ -32,8 +46,13 @@ function App() {
         <Text>Hello</Text>
       </Box>  
       <Circle bgColor="tomato"/>
-     </Father>
+      <Button> Log in </Button>
+      <Button as="a" href="/"> Log in2 </Button>
+      
+      <Input required/> 
+      <Input /> 
+      <Input /> 
+    </Father>
   );
 }
-
 export default App;
