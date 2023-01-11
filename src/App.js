@@ -1,4 +1,5 @@
-import styled from "styled-components";
+// 예는 또 왜 이렇게 import 하는겨 ㅠㅠ  
+import styled, {keyframes}  from "styled-components";
 
 // stlyle 정의  const 로 정의 styled.div(html tag 이름으로 )
 // css 비해 바뀌는 게 
@@ -9,6 +10,8 @@ import styled from "styled-components";
 // 자동 완성이 안됨 
 const Father = styled.div`
   display :flex ;
+  flex-direction : column;
+  flex-wrap : nowrap;
   `;
 
 // tag 에서부터 값을 받아 오고 싶을때 prop 이용
@@ -38,20 +41,44 @@ const Input = styled.input.attrs({required:true , maxLength:10})`
   required:true;
   maxLength:10
 `;
+// animation keyframes 
+const rotationAnimation = keyframes`
+  from {
+    transform:rotate(0deg);
+    border-radius:0;
+  }
+  to {
+    transform:rotate(360deg);
+    border-radius:50px;
+  }
+`;
+
+//animation을 위한 Box 
+const AnimationBox = styled.div`
+  height:200px;
+  width:200px;
+  background-color : yellow;
+  animation:${rotationAnimation} 5s linear infinite;
+`;
+
 
 function App() {
   return (
     <Father>
+      <span>Box</span>
       <Box bgColor="teal"> 
         <Text>Hello</Text>
       </Box>  
+      <span>Circle from inherit Box </span>
       <Circle bgColor="tomato"/>
+      <span>button</span>
       <Button> Log in </Button>
+      <span> a tag substitute </span>
       <Button as="a" href="/"> Log in2 </Button>
-      
-      <Input required/> 
+      <span>input attribute</span>
       <Input /> 
-      <Input /> 
+      <span>animation</span>
+      <AnimationBox />
     </Father>
   );
 }
