@@ -54,11 +54,21 @@ const rotationAnimation = keyframes`
 `;
 
 //animation을 위한 Box 
+//justify-content:center; : 좌우로 center 
+// align-items:center; : 아래위로 center 
 const AnimationBox = styled.div`
   height:200px;
   width:200px;
   background-color : yellow;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   animation:${rotationAnimation} 5s linear infinite;
+  span{
+    font-size:36px;
+    &:hover{
+      font-size: 46px;
+  }
 `;
 
 
@@ -78,7 +88,9 @@ function App() {
       <span>input attribute</span>
       <Input /> 
       <span>animation</span>
-      <AnimationBox />
+      <AnimationBox>
+        <span>😍</span>
+      </AnimationBox>
     </Father>
   );
 }
