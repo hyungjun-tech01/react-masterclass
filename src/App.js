@@ -9,6 +9,8 @@ import styled, {keyframes}  from "styled-components";
 // backtik으로 묶어야 함. ``
 // 자동 완성이 안됨 
 const Father = styled.div`
+  color:${props=>props.theme.textColor};
+  background-color:${props=>props.theme.backgroundColor};
   display :flex ;
   flex-direction : column;
   flex-wrap : nowrap;
@@ -31,8 +33,7 @@ const Text = styled.span`
 // button tag의 변경 button -> a 
 const Button = styled.button`
   background-color : tomato;
-  border:0;
-  border-radius : 15px
+  border-radius : 10px
 `;
 //maxLength , required 를 style안에 세팅하면 동작을 안함.. 이건 style이 아님.
 // 즉 input tag의 속성을 정의 할 수 있음 .attrs
@@ -52,6 +53,9 @@ const rotationAnimation = keyframes`
     border-radius:50px;
   }
 `;
+const Emoji = styled.div`
+    font-size: 36px;
+`;
 
 //animation을 위한 Box 
 //justify-content:center; : 좌우로 center 
@@ -64,13 +68,9 @@ const AnimationBox = styled.div`
   justify-content:center;
   align-items:center;
   animation:${rotationAnimation} 5s linear infinite;
-  span{
-    font-size:36px;
-    &:hover{
-      font-size: 46px;
-  }
+  ${Emoji}:hover{
+    font-size:56px;
 `;
-
 
 function App() {
   return (
@@ -89,7 +89,7 @@ function App() {
       <Input /> 
       <span>animation</span>
       <AnimationBox>
-        <span>😍</span>
+        <Emoji>😍</Emoji>
       </AnimationBox>
     </Father>
   );
